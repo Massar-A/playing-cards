@@ -1,30 +1,30 @@
-<div id="card">
-    <div id="inside">
-        <header>
-            <div class="left">
-                <div id="name" class="text-sm font-bold">My monster</div>
+<div id="card" class="block p-2.5 rounded-xl shadow-md bg-background-grey w-[250px]">
+    <div id="inside" class="p-[5px] bg-electric-yellow rounded-lg">
+        <header class="flex text-base font-bold mb-[5px]">
+            <div class="left flex w-1/2 items-center">
+                <div id="name" class="text-sm font-bold">{{monster().name}}</div>
             </div>
-            <div class="right">
-                <div id="hp">40 HP</div>
-                <img class="energy icon" src="img/electric.png">
+            <div class="right flex w-1/2 items-center flex-row justify-end gap-[10px]">
+                <div id="hp" class="align-middle">{{monster().hp}} HP</div>
+                <img class="type align-middle icon energy" src="img/electric.png">
             </div>
         </header>
-        <figure id="art">
-            <img src="img/pik.jpg">
-            <figcaption>N°025 MONSTER</figcaption>
+        <figure id="art" class="w-[calc(100% -10px)] m-0 p-[5px] pb-0 bg-stone-300">
+            <img class="w-full h-[175px] object-cover" src="img/pik.jpg">
+            <figcaption class="text-center text-sm pb-[2px]">{{monster().figureCaption}}</figcaption>
         </figure>
-        <div id="capacities">
-            <div class="capacity">
-                <div class="main">
-                    <div class="cost">
+        <div id="capacities" class="flex flex-col justify-center h-[100px]">
+            <div class="capacity flex m-0 flex-col">
+                <div class="main flex flex-row gap-[10px] font-bold">
+                    <div class="cost flex gap-[5px] items-center">
                         <img class="icon energy" src="img/electric.png"/>
                         <img class="icon energy" src="img/electric.png"/>
                     </div>
-                    <div class="name">Geo impact</div>
-                    <div class="dmg">60</div>
+                    <div class="name grow">{{monster().attackName}}</div>
+                    <div class="dmg">{{monster().attackStrength}}</div>
                 </div>
             </div>
-            <div class="description">This is a description of monster capacity</div>
+            <div class="description text-sm">{{monster().attackDescription}}</div>
         </div>
     </div>
 </div>

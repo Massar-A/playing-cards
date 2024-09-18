@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .icon.energy {
+      @apply w-[15px] h-[15px]
+    }
+  }
