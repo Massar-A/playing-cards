@@ -1,24 +1,24 @@
 <div id="card" class="block p-2.5 rounded-xl shadow-md bg-background-grey w-[250px]">
-    <div id="inside" class="p-[5px] bg-electric-yellow rounded-lg">
+    <div id="inside" [class]="['p-[5px]', backgroundColor(), 'rounded-lg']">
         <header class="flex text-base font-bold mb-[5px]">
             <div class="left flex w-1/2 items-center">
                 <div id="name" class="text-sm font-bold">{{monster().name}}</div>
             </div>
             <div class="right flex w-1/2 items-center flex-row justify-end gap-[10px]">
                 <div id="hp" class="align-middle">{{monster().hp}} HP</div>
-                <img class="type align-middle icon energy" src="img/electric.png">
+                <img class="type align-middle icon energy" [src]="monsterTypeIcon()">
             </div>
         </header>
         <figure id="art" class="w-[calc(100% -10px)] m-0 p-[5px] pb-0 bg-stone-300">
-            <img class="w-full h-[175px] object-cover" src="img/pik.jpg">
+            <img class="w-full h-[175px] object-cover" [src]="monster().image">
             <figcaption class="text-center text-sm pb-[2px]">{{monster().figureCaption}}</figcaption>
         </figure>
         <div id="capacities" class="flex flex-col justify-center h-[100px]">
             <div class="capacity flex m-0 flex-col">
                 <div class="main flex flex-row gap-[10px] font-bold">
                     <div class="cost flex gap-[5px] items-center">
-                        <img class="icon energy" src="img/electric.png"/>
-                        <img class="icon energy" src="img/electric.png"/>
+                        <img class="icon energy" [src]="monsterTypeIcon()"/>
+                        <img class="icon energy" [src]="monsterTypeIcon()"/>
                     </div>
                     <div class="name grow">{{monster().attackName}}</div>
                     <div class="dmg">{{monster().attackStrength}}</div>
