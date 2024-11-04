@@ -1,0 +1,85 @@
+<div class="m-5 w-[300px] inline-block">
+    <app-playing-card [monster]="monster"></app-playing-card>
+</div>
+<div class="w-[calc(100% -340px)] inline-block">
+    <form [formGroup]="formGroup" (submit)="submit($event)" class="max-w-[300px]">
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="name" class="text-sm">Name</label>
+            <input id="name" name="name" type="text" pInputText formControlName="name" />
+            @if (isFieldValid('name')) {
+            <div class="text-red-600 text-xs">This field is required</div>
+            }
+        </div>
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="image" class="text-sm">Image</label>
+            <p-fileUpload id="image" mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="image"
+                accept="image/*" (onSelect)="onFileChange($event)" />
+            @if (isFieldValid('image')) {
+            <div class="text-red-600 text-xs">This field is required</div>
+            }
+        </div>
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="type" class="text-sm">Type</label>
+            <p-dropdown [options]="monsterTypes" placeholder="Select a type" formControlName="type" />
+            @if (isFieldValid('type')) {
+            <div class="text-red-600 text-xs">This field is invalid</div>
+            }
+        </div>
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="hp" class="text-sm">HP</label>
+            <p-inputNumber id="hp" name="hp" inputId="integeronly" formControlName="hp" />
+            @if (isFieldValid('hp')) {
+            @if (formGroup.get('hp')?.hasError('required')) {
+            <div class="text-red-600 text-xs">A valid number is required.</div>
+            }
+            @if (formGroup.get('hp')?.hasError('min')) {
+            <div class="text-red-600 text-xs">This field needs to be bigger than 0.</div>
+            }
+            @if (formGroup.get('hp')?.hasError('max')) {
+            <div class="text-red-600 text-xs">This field needs to be smaller or equal to 200.</div>
+            }
+            }
+        </div>
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="figureCaption" class="text-sm">Figure caption</label>
+            <input id="figureCaption" name="figureCaption" type="text" pInputText formControlName="figureCaption" />
+            @if (isFieldValid('figureCaption')) {
+            <div class="text-red-600 text-xs">This field is required</div>
+            }
+        </div>
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="attackName" class="text-sm">Attack name</label>
+            <input id="attackName" name="attackName" type="text" pInputText formControlName="attackName" />
+            @if (isFieldValid('attackName')) {
+            <div class="text-red-600 text-xs">This field is required</div>
+            }
+        </div>
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="attackStrength" class="text-sm">Attack strength</label>
+            <p-inputNumber id="hp" name="hp" inputId="integeronly" formControlName="attackStrength" />
+            @if (isFieldValid('attackStrength')) {
+            @if (formGroup.get('attackStrength')?.hasError('required')) {
+            <div class="text-red-600 text-xs">A valid number is required.</div>
+            }
+            @if (formGroup.get('attackStrength')?.hasError('min')) {
+            <div class="text-red-600 text-xs">This field needs to be bigger than 0.</div>
+            }
+            @if (formGroup.get('attackStrength')?.hasError('max')) {
+            <div class="text-red-600 text-xs">This field needs to be smaller or equal to 200.</div>
+            }
+            }
+        </div>
+        <div class="flex flex-col mx-0 my-[10px]">
+            <label for="attackDescription" class="text-sm">Attack description</label>
+            <input id="attackDescription" name="attackDescription" type="text" pInputText
+                formControlName="attackDescription" />
+            @if (isFieldValid('attackDescription')) {
+            <div class="text-red-600 text-xs">This field is required</div>
+            }
+        </div>
+        <div class="flex gap-2">
+            <p-button (onClick)="navigateBack()" label="Back" severity="danger" />
+            <p-button type="submit" [disabled]="formGroup.invalid" label="Save"/>
+        </div>
+    </form>
+</div>

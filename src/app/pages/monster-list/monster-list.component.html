@@ -1,0 +1,20 @@
+<app-search-bar [(search)]="search" />
+<div class="flex gap-5 flex-wrap items-center justify-center">
+    @for (monster of filteredMonsters(); track monster.id; let i = $index) {
+        <app-playing-card [monster]="monster" (click)="openMonster(monster)" class="cursor-pointer" />
+    } @empty {
+        <div class="mt-10 text-center">
+            No monsters found
+        </div>
+    }
+</div>
+
+@if (filteredMonsters().length > 0) {
+    <div class="mt-10 text-center">
+        Found {{filteredMonsters().length}} monsters
+    </div>
+}
+
+<div>
+    <p-button label="Add monster" (onClick)="addMonster()"/>
+</div>
